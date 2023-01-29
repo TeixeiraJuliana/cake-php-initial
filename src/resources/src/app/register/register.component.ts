@@ -1,5 +1,5 @@
 import { RegisterService } from './register.service';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validator, NgForm } from "@angular/forms";
 import { Router } from '@angular/router';
 import { first } from 'rxjs';
@@ -13,18 +13,18 @@ import { first } from 'rxjs';
   styleUrls: ['./register.component.css'],
 
 })
-export class RegisterComponent {
+export class RegisterComponent implements OnInit {
 
-  angForm : FormGroup
+  angForm: FormGroup
 
   constructor(
     private fb: FormBuilder,
     private registerService: RegisterService,
-    private router: Router
+    private router: Router,
+
 
   ){
     this.angForm = this.fb.group({
-      id: '',
       name: '',
       email:'',
       password:''
@@ -38,15 +38,19 @@ export class RegisterComponent {
 
   }
   postData(angForm:any){
-    // this.registerService.onSendRegister(
-    //   angForm.value.
-    // )
-    //.pipe(first())
+    this.registerService.onSendRegister(
+      angForm.value.name,
+      angForm.value.email,
+      angForm.value.password
+    )
+    .pipe(first())
 
-    // .subscribe(data =>
-    //   { this.router.navigate(['login']) }
-    //   res=>{ console.log(res)},
-    //   error=>{ console.log(error)}
-    // )
+    .subscribe(
+    data => {
+      this.router.navigate(['login'])
+    },
+      //res=>{ console.log(res)},
+      error=>{ console.log(error)}
+    )
   }
 }
