@@ -1,0 +1,29 @@
+
+  <form [formGroup]="angForm" (ngSubmit)="postdata(angForm)" autocomplete="off" >
+    <img class="mb-4" src="../assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+    <div class="form-group">
+      <input type="email" formControlName="name"  autocomplete="off" id="floatingInput" placeholder="name@example.com">
+      <label for="name">Name</label>
+    </div>
+    <div class="form-group">
+      <input type="email" formControlName="email"  autocomplete="off" id="floatingInput" placeholder="name@example.com">
+      <label for="email">Email address</label>
+    </div>
+    <div class="form-group">
+      <input type="password"  formControlName="password"  autocomplete="off"  id="floatingPassword" placeholder="Password">
+      <label for="password">Password</label>
+    </div>
+
+    <div class="checkbox mb-3">
+      <label>
+        <input type="checkbox" value="remember-me"> Remember me
+      </label>
+    </div>
+    <button class="btn btn-succes" type="submit">Sign in</button>
+  </form>
+
+
+
+
